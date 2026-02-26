@@ -5,7 +5,7 @@
 ---
 
 ## 🌐 Live Portfolio
-🔗 https://YOUR-USERNAME.github.io/Portfolio/
+🔗 https://hemanth-yeripalli.github.io/Portfolio/
 
 ---
 
