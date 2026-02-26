@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hemath portfolio</title>
+    <style>
+      .toast {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #38bdf8;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 9999;   
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+
+        /* ===== Global Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body {
+            background: #0f172a;
+            color: #fff;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background: #1e293b;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            align-items: flex-start;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #38bdf8;
+            align-items:center;
+        }
+        nav a {
+            margin-left: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #e2e8f0; 
+        }
+        nav a:hover {
+            color: #38bdf8;
+        }
+        section {
+            min-height: 90vh;
+            padding: 200px 10% 50px;
+        } 
+        .hero{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+
+           background-image: url("images/home.png"); 
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;
+            
+        }
+        .hero-text h1{
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .hero-text h1 span{
+            color: #38bdf8;
+        }
+        .hero-text p{
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #e2e8f0;
+        }
+        .btn{
+            padding: 10px 20px;
+            background: #38bdf8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover{
+            background: #0ea5e9;
+        }
+        .about p{
+            max-width: 600px;
+            margin: 20px auto;
+            font-size: 18px;
+            color: #e2e8f0;
+        }
+        .about{
+            text-align: center;
+            background-image: url('images/about.png');
+        }
+        .about h2{
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+        .projects{
+            text-align: center;
+            background-image: url("images/project.png");
+        }
+        .projects h2{
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+        .project-list{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .project-item{
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            transition: 0.3s;
+        }
+        .project-item:hover{
+            transform:matrix3d(1.05, 0, 0, 0, 0, 1.05, 0, 0, 0, 0, 1.05, 0, 0, 0, 0, 1);
+             box-shadow: 0 8px 20px rgba(56,189,248,0.3);
+        }
+        .project-item h3{
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+        .project-item p{
+            font-size: 16px;
+            color: #e2e8f0;
+        }
+        .contact{
+            text-align: center;
+            background-image: url("images/contact.png");
+        }
+        .contact h2{
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+        .contact form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .contact input,
+        .contact textarea{
+            width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        .contact button{
+            padding: 10px 20px;
+            background: #38bdf8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact button:hover{
+            background: #0ea5e9;
+        }
+        .services{
+            text-align: center;
+            background-image: url("images/service.png");
+        }
+        .services h2{
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+        .services ul{
+            list-style: none;
+            font-size: 18px;
+            color: #e2e8f0;
+        }
+        .services ul li{
+            margin: 10px 0;
+        }
+        footer{
+            text-align: center;
+            padding: 20px;
+            background: #1e293b;
+            color: #94a3b8;
+        } 
+        .project.btn{
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #38bdf8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }   
+    </style>
+</head>
+<body>
+   <div>
+    <header>
+       <div class="logo"> <span style="font-size:24px;">👤</span>MyPortfolio</div>
+        <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">about</a>
+    <a onclick="showSection('projects')">projects</a>
+    <a onclick="showSection('services')">services</a>
+    <a onclick="showSection('contact')">contact</a>
+        </nav>
+    </header>
+
+    <!--Hero Section  -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+         <h1>Hello, I'm <span>Frontend Developer</span></h1>
+        <p>I design and build responsive, modern web applications.</p>
+        <a onclick="showSection('projects')" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+    <p>
+        I am a passionate frontend developer skilled in HTML, CSS, and JavaScript.
+        I enjoy building beautiful, responsive, and user-friendly websites.
+    </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-list">
+            <div class="project-item">
+                <h3>Project 1</h3>
+                <p>Developed a responsive and user-friendly calculator web application using HTML, CSS, and JavaScript.</p>
+                <a href="calculator.html"><button class="btn">View</button></a>
+            </div>
+            <div class="project-item">
+                <h3>Project 2</h3>
+                <p>Built a real-time digital clock web application using HTML, CSS, and JavaScript that dynamically updates every second with a clean and responsive design.</p>
+                <a href="DIGITAL.html"><button class="btn">View</button></a>
+            </div>
+            <div class="project-item">
+                <h3>Project 3</h3>
+                <p>A responsive Tiffin Hotel website designed to showcase menu items, pricing, and contact details with a clean and modern layout.</p>
+                <a href="hotel.html"><button class="btn">View</button></a>
+        </div>
+     </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>My Services</h2>
+        <ul>
+            <li>Web Design and Development</li>
+            <li>Responsive Design</li>
+            <li>UI/UX Design</li>
+            <li>JavaScript Development</li>
+        </ul>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+         © 2026 MyPortfolio | All Rights Reserved | ✉ hemanthyeripalli@gmail.com | 📞 +91 7989522209 
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Show the home section by default
+        showSection('home');
+        document.querySelector('.contact form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent! Thank you for contacting me.');
+            this.reset();
+        });
+       // alert("Welcome to my portfolio! Feel free to explore my projects and contact me for any inquiries.");
+        
+        window.addEventListener("DOMContentLoaded", function () {
+    const toast = document.getElementById("toast");
+
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 500);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3500);
+});
+    </script>
+    <div id="toast" class="toast">Welcome to my portfolio! 👋</div>
+</body>
+</html>
